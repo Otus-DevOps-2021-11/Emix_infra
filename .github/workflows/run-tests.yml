@@ -1,8 +1,9 @@
 name: Run tests for OTUS homework
 
 on:
-  branches:
-    - '*'
+  push:
+    branches:
+      - '*'
 
 jobs:
   test:
