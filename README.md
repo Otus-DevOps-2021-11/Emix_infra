@@ -1,3 +1,28 @@
+# Emix_infra
+Emix Infra repository
+
+get IP bastion
+
+```
+yc compute instance get bastion --format json | -r jq '.network_interfaces[] .primary_v4_address .one_to_one_nat .address'
+```
+
+
+
+### task1
+
+ssh -A -t 62.84.114.0 ssh emil@10.128.0.32
+
+
+### task2
+
+```
+Host internal
+  User emil
+  ProxyCommand ssh emil@62.84.117.108 nc 10.128.0.32 22
+```
+
+
 testapp_IP = 84.252.133.83
 testapp_port = 9292
 
