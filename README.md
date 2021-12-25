@@ -68,3 +68,19 @@ yc compute instance create \
 * Daemonizing...
 http://84.252.133.83:9292/
 ```
+
+#### Packer
+
+Запуск создания образа для Yandex.Cloud без установки Packer
+
+
+
+```
+cd packer
+
+docker run --env YC_TOKEN=$YC_TOKEN -it --rm \
+-v `pwd`:/workspace -w /workspace \
+hashicorp/packer:latest \
+build -var-file=variables.json immutable.json
+
+```

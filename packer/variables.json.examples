@@ -1,0 +1,5 @@
+{
+    "token": "{{env `YC_TOKEN`}}",
+    "folder": "b1gp.........rtl3i",
+    "source_image_family": "ubuntu-1604-lts"
+}
