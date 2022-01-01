@@ -5,15 +5,33 @@ provider "yandex" {
   zone      = var.zone
 }
 
+resource "yandex_vpc_network" "app-network" {
+  name        = "App network"
+  description = "Newtwork for app by Terraform"
+  folder_id   = var.folder_id
+  labels = {
+    name = "otus"
+  }
+}
+
+resource "yandex_vpc_subnet" "app-subnet" {
+  name           = "App subnet for app by Terraform"
+  v4_cidr_blocks = ["192.168.0.0/16"]
+  zone           = var.zone
+  network_id     = yandex_vpc_network.app-network.id
+}
+
 resource "yandex_compute_instance" "app" {
-  name = "reddit-app"
+  name  = "reddit-app-${count.index}"
+  count = var.instance_count
+  platform_id = "standard-v1"
+  hostname = "reddit-app-${count.index}"
 
   connection {
     type  = "ssh"
-    host  = yandex_compute_instance.app.network_interface.0.nat_ip_address
+    host  = self.network_interface.0.nat_ip_address
     user  = "ubuntu"
     agent = false
-    # путь до приватного ключа
     private_key = file(var.private_key_path)
   }
 
@@ -35,8 +53,7 @@ resource "yandex_compute_instance" "app" {
   }
 
   network_interface {
-    # Указан id подсети default-ru-central1-a
-    subnet_id = var.subnet_id
+    subnet_id = yandex_vpc_subnet.app-subnet.id
     ipv6      = false
     nat       = true
   }
