@@ -22,16 +22,16 @@ resource "yandex_vpc_subnet" "app-subnet" {
 }
 
 resource "yandex_compute_instance" "app" {
-  name  = "reddit-app-${count.index}"
-  count = var.instance_count
+  name        = "reddit-app-${count.index}"
+  count       = var.instance_count
   platform_id = "standard-v1"
-  hostname = "reddit-app-${count.index}"
+  hostname    = "reddit-app-${count.index}"
 
   connection {
-    type  = "ssh"
-    host  = self.network_interface.0.nat_ip_address
-    user  = "ubuntu"
-    agent = false
+    type        = "ssh"
+    host        = self.network_interface.0.nat_ip_address
+    user        = "ubuntu"
+    agent       = false
     private_key = file(var.private_key_path)
   }
 

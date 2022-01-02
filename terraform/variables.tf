@@ -16,12 +16,12 @@ variable zone {
 
 variable "zone_id" {
   description = "Zone ID"
-  default = "ru-central1"
+  default     = "ru-central1"
 }
 
 variable "instance_count" {
   description = "Count of instances"
-  default = 1
+  default     = 1
 }
 
 variable public_key_path {
