@@ -84,3 +84,20 @@ hashicorp/packer:latest \
 build -var-file=variables.json immutable.json
 
 ```
+
+
+#### Terraform
+
+В папке `/terraform`
+
+Запуск `terraform apply` в результате создаст
+Сеть, подсеть, ВМ, целевую группу балансировки, балансировщик и сами ВМ и установит приложение.
+
+* files	- файлы деплоя для созданных ВМ			
+* outputs.tf - выходные переменные, напрмиер IP озданных ВМ			
+* terraform.tfvars - значение переменных
+* lb.tf - файл описывающий балансировщик нагрузки
+* terraform.tfvars.example - значение переменных
+* main.tf - главный файл описывающий ресурсы , которые будут созданы
+* variables.tf - Объявление переменных такие как YC_TOKEN, instance_count - количество ВМ и др.
+
