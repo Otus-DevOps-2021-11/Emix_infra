@@ -1,6 +1,0 @@
-cloud_id        = "b1***********p7"
-folder_id       = "b1***********l3i"
-image_id        = "fd***********cco7"
-public_key_path = "~/.ssh/id_rsa.pub"
-token           = "Ag*********************************04I"
-instance_count  = 1
