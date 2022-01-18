@@ -29,17 +29,19 @@ variable public_key_path {
   description = "Path to the public key used for ssh access"
 }
 
+variable subnet_id {
+  # Описание переменной
+  description = "Subnet ID"
+}
+
 variable private_key_path {
   # Описание переменной
   description = "Path to the private key used for ssh access"
   default     = "~/.ssh/id_rsa"
 }
 
-variable image_id {
-  description = "Disk image"
-}
 
-
-variable "token" {
-  description = "YC token"
+variable app_disk_image {
+  description = "Disk image for reddit app"
+  default = "reddit-app-base"
 }

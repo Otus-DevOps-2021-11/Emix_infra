@@ -1,26 +1,3 @@
-provider "yandex" {
-  token     = var.token
-  cloud_id  = var.cloud_id
-  folder_id = var.folder_id
-  zone      = var.zone
-}
-
-resource "yandex_vpc_network" "app-network" {
-  name        = "App network"
-  description = "Newtwork for app by Terraform"
-  folder_id   = var.folder_id
-  labels = {
-    name = "otus"
-  }
-}
-
-resource "yandex_vpc_subnet" "app-subnet" {
-  name           = "App subnet for app by Terraform"
-  v4_cidr_blocks = ["192.168.0.0/16"]
-  zone           = var.zone
-  network_id     = yandex_vpc_network.app-network.id
-}
-
 resource "yandex_compute_instance" "app" {
   name        = "reddit-app-${count.index}"
   count       = var.instance_count
@@ -48,22 +25,13 @@ resource "yandex_compute_instance" "app" {
   boot_disk {
     initialize_params {
       # Указать id образа созданного в предыдущем домашем задании
-      image_id = var.image_id
+      image_id = var.app_disk_image
     }
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.app-subnet.id
+    subnet_id = var.subnet_id
     ipv6      = false
     nat       = true
-  }
-
-  provisioner "file" {
-    source      = "files/puma.service"
-    destination = "/tmp/puma.service"
-  }
-
-  provisioner "remote-exec" {
-    script = "files/deploy.sh"
   }
 }
