@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "yandex",
-            "service_account_key_file": "{{user `key_file`}}",
+            "token": "{{user `token`}}",
             "folder_id": "{{user `folder_id`}}",
             "zone" : "ru-central1-a",
             "subnet_id" : "e9bsc32i7d9ia5r2dh57",
