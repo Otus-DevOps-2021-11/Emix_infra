@@ -2,20 +2,22 @@
     "builders": [
         {
             "type": "yandex",
-            "token": "{{user `token`}}",
-            "folder_id": "{{user `folder`}}",
-            "source_image_family": "{{user `source_image_family`}}",
+            "service_account_key_file": "{{user `key_file`}}",
+            "folder_id": "{{user `folder_id`}}",
+            "zone" : "ru-central1-a",
+            "subnet_id" : "e9bsc32i7d9ia5r2dh57",
+            "use_ipv4_nat" : "true",
+            "source_image_family": "{{user `source_image`}}",
             "image_name": "reddit-db-{{timestamp}}",
-            "image_family": "reddit-db",
+            "image_family": "reddit-base",
             "ssh_username": "ubuntu",
-            "platform_id": "standard-v1",
-            "use_ipv4_nat": true
+            "platform_id": "standard-v1"
         }
     ],
     "provisioners": [
         {
-	    "type": "ansible",
-            "playbook_file": "ansible/packer_db.yml"
+        "type": "ansible",
+        "playbook_file": "ansible/playbooks/packer_db.yml"
         }
     ]
 }
