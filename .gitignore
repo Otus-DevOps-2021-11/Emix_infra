@@ -1,3 +1,4 @@
+*.retry
 packer/variables.json
 .envrc
 *.tfstate
