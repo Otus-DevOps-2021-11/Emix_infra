@@ -1,15 +1,10 @@
----
 - name: Configure App
   hosts: app
+  tags: app-tag
   become: true
   vars:
-   db_host: 192.168.0.9
+   db_host: 10.128.0.31
   tasks:
-    - name: Install Git
-      apt:
-        name: git
-        state: present
-
     - name: Add unit file for Puma
       copy:
         src: files/puma.service
