@@ -1,5 +1,5 @@
 {
-  "key_file": "./key.json.example",
+  "token": "VJHGVjkhbjkhbkJBKJB",
   "folder_id": "folderid12345678",
   "source_image": "ubuntu-1604-lts"
 }
