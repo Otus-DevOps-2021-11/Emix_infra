@@ -1,0 +1,9 @@
+*.retry
+packer/variables.json
+.envrc
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform/
+*.DS_Store

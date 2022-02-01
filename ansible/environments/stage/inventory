@@ -1,0 +1,7 @@
+[app]
+appserver ansible_host=84.252.128.99
+[db]
+dbserver ansible_host=84.252.128.192
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
