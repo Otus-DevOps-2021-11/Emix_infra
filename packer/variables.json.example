@@ -1,5 +1,5 @@
 {
-  "token": "VJHGVjkhbjkhbkJBKJB",
-  "folder_id": "folderid12345678",
-  "source_image": "ubuntu-1604-lts"
+    "service_account_key_file": "packer/key.json.example",
+    "folder_id": "yandex cloud folder id",
+    "source_image_family": "ubuntu-1604-lts"
 }
