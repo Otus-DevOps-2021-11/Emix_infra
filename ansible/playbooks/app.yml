@@ -1,5 +1,5 @@
 ---
-- name: Configure App
+- name: Configure app host
   hosts: app
   become: true
 
